@@ -5,9 +5,10 @@ from keras.models import model_from_json, Model
 from keras.optimizers import Adam
 from keras import backend as K
 from .utils.attention import Attention
-from keras.utils import multi_gpu_model
 from keras.layers import Conv2D, Lambda, add, AvgPool2D, Activation, UpSampling2D, Input, concatenate, Reshape, LeakyReLU, Reshape, Flatten, concatenate
+import tensorflow as tf
 
+session = tf.distribute.MirroredStrategy()
 class DiscriminatorMedium():
     """1/2 Resolution Discriminator.
         
@@ -76,6 +77,7 @@ class DiscriminatorMedium():
             self.save_model = self.model
         else:
             self.save_model = Model(discriminator_low_res_input, [x, discriminator_low_features])
-            self.model = multi_gpu_model(self.save_model, gpus=self.gpus)
+            with session.scope():
+                model = load_model(self.save_model)
         
         self.model.compile(optimizer=optimizer, loss_weights=loss_weights_d, loss=loss_d)

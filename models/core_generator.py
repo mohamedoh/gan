@@ -1,10 +1,12 @@
-from keras.engine.topology import Input
+from tensorflow.keras.layers import Layer, InputSpec, Input
+from tensorflow.keras.layers import InputSpec
+
 from keras.engine.training import Model
 from keras.layers import LeakyReLU, Concatenate, Dropout
 from keras.layers.convolutional import Conv2D, UpSampling2D, Conv2DTranspose
 from keras.layers.core import Activation, SpatialDropout2D
-from keras.layers.merge import concatenate
-from keras.layers.normalization import BatchNormalization
+from tensorflow.keras.layers import concatenate
+from tensorflow.keras.layers import BatchNormalization
 from keras.layers.pooling import MaxPooling2D
 from .utils.instance_normalization import InstanceNormalization
 from .utils.sn import ConvSN2D

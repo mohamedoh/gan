@@ -1,5 +1,7 @@
 from keras import backend as K
 from keras.engine import *
+from tensorflow.keras.layers import InputSpec
+
 from tensorflow.keras.layers import Layer
 from tensorflow.keras.optimizers  import Adam
 from keras import activations

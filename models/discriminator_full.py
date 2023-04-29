@@ -5,8 +5,10 @@ from .utils.sn import ConvSN2D
 from keras.optimizers import Adam
 from keras import backend as K
 from .utils.attention import Attention
-from keras.utils import multi_gpu_model
 from keras.layers import Conv2D, Lambda, add, AvgPool2D, Activation, UpSampling2D, Input, concatenate, Reshape, LeakyReLU, Reshape, Flatten, concatenate
+import tensorflow as tf
+
+session = tf.distribute.MirroredStrategy()
 
 
 class DiscriminatorFull():
@@ -76,8 +78,8 @@ class DiscriminatorFull():
             self.save_model = self.model
         else:
             self.save_model = Model(discriminator_input, [x, discriminator_features])
-            self.model = multi_gpu_model(self.save_model, gpus=gpus)
-
+            with session.scope():
+                model = load_model(self.save_model)
         loss_weights_d = [1, 0]
         optimizer = Adam(self.learning_rate, 0.5, decay=self.decay_rate)
         self.model.compile(optimizer=optimizer, loss_weights=loss_weights_d, loss=loss_d)
