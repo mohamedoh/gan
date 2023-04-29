@@ -1,11 +1,11 @@
 #Source: https://github.com/keras-team/keras-contrib/
 
-from tf.keras.layers import Lambda , InputSpec
+from tensorflow.keras.layers import Lambda , InputSpec, Layer
 from keras import initializers 
 from keras import regularizers
 from keras import constraints
 from keras import backend as K
-from keras.utils.generic_utils import get_custom_objects
+from tensorflow.keras.saving import get_custom_objects
 
 import numpy as np
 

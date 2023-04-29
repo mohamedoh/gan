@@ -24,10 +24,8 @@ from lib.data_utils import generator, generate_label_data
 
 # Keras Modules
 import keras
-from keras.utils import multi_gpu_model
 from keras.layers import Lambda, UpSampling2D, Input, concatenate
 from keras.utils.data_utils import  GeneratorEnqueuer
-from keras.utils import multi_gpu_model
 from keras.callbacks import TensorBoard
 from keras.optimizers import Adam
 from keras.models import Model, save_model, load_model

@@ -1,5 +1,6 @@
 import numpy as np
-from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
+from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.utils import array_to_img,img_to_array,load_img
 from keras.preprocessing import image
 import tensorflow as tf
 from keras.callbacks import TensorBoard

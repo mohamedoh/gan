@@ -1,7 +1,7 @@
 from keras import backend as K
 from keras.layers import InputSpec
 import tensorflow as tf
-from keras.engine.topology import Layer
+from tensorflow.keras.layers import Layer
 
 # -------------------------------------------------------------------------------------
 #  Attention Layer from Self-Attention Generative Adversarial Networks

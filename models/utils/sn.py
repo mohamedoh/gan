@@ -1,16 +1,16 @@
 from keras import backend as K
 from keras.engine import *
-from keras.legacy import interfaces
+from tensorflow.keras.layers import Layer
+from tensorflow.keras.optimizers  import Adam
 from keras import activations
 from keras import initializers
 from keras import regularizers
 from keras import constraints
 from keras.utils.generic_utils import func_dump
 from keras.utils.generic_utils import func_load
-from keras.utils.generic_utils import deserialize_keras_object
+from keras.saving.saving_api import save_model
 from keras.utils.generic_utils import has_arg
 from keras.utils import conv_utils
-from keras.legacy import interfaces
 from keras.layers import Dense, Conv1D, Conv2D, Conv3D, Conv2DTranspose, Embedding
 import tensorflow as tf
 
